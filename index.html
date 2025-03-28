@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    
+    <style>
+        
+        body {
+            background-image: url("back-Photoroom.png");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+       
+        .neon-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: #0ff; /* Cyan neon color */
+            text-transform: uppercase;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 
+                0 0 5px #0ff, 
+                0 0 10px #0ff, 
+                0 0 20px #0ff, 
+                0 0 40px #00f, 
+                0 0 80px #00f;
+        }
+        #block{
+            background-image: url("block.png");
+            background-size: cover;
+            width: 350px;
+            height: 350px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .neon-button {
+            background-image: url("button-Photoroom.png");
+            background-size: cover;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 15px 40px;
+            
+            border: 5px solid #ff00ff;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            transition: 0.3s;
+            outline: none;
+            box-shadow: 0 0 10px #ff00ff, 0 0 40px #00ffff;
+        }
+
+        
+        .neon-button::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid #00ffff;
+            opacity: 0;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #00ffff, 0 0 60px #ff00ff;
+        }
+
+        
+        .neon-button:hover {
+            color: #00ffff;
+            border-color: #00ffff;
+            box-shadow: 0 0 20px #00ffff, 0 0 60px #ff00ff;
+        }
+
+        .neon-button:hover::before {
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="neon-text">Tic-Tac-Toe</div>
+    <div id="block"></div>
+    <button class="neon-button" onclick="window.location.href='tic-tac-toe.html'">Start</button>
+    
+</body>
+</html>
