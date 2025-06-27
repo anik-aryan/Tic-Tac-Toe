@@ -207,7 +207,7 @@ const Calendar = ({ onOpenSidebar }) => {
                     <div className='grid grid-cols-7'>
                         {calendarDays.map(({ date, isDifferentMonth }) => {
                             const dateStr = formatDate(date);
-                            const tasksForDay = tasks.filter(t => t.dueDate === dateStr);
+                            const tasksForDay = tasks.filter(t => t.dueDate === dateStr && !t.completed);
                             const isToday = dateStr === todayFormatted;
 
                             return (

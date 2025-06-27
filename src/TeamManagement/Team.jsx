@@ -10,7 +10,7 @@ const Team = () => {
     const fadeElements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) {
+        if (entry.isIntersecting) {
           entry.target.style.opacity = 1;
           entry.target.style.transform = 'translateY(0)';
           observer.unobserve(entry.target);
@@ -45,7 +45,7 @@ const Team = () => {
     cancelInvite.addEventListener('click', closeModalFunc);
 
     inviteModal.addEventListener('click', (e) => {
-      if(e.target === inviteModal) {
+      if (e.target === inviteModal) {
         closeModalFunc();
       }
     });
@@ -55,10 +55,61 @@ const Team = () => {
       const email = document.getElementById('invite-email').value;
       const role = document.getElementById('invite-role').value;
 
-    alert(`Invitation sent to ${email} for role: ${role}`)
-    })
-  }, [])
-  
+      alert(`Invitation sent to ${email} for role: ${role}`);
+      closeModalFunc();
+      inviteForm.reset();
+    });
+
+    const searchInput = document.getElementById('search-input');
+    const roleFilter = document.getElementById('role-filter');
+    const statusFilter = document.getElementById('status-filter');
+    const memberCards = document.querySelectorAll('.member-card');
+    const noResults = document.getElementById('no-results');
+
+    const filterMembers = () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const roleValue = roleFilter.value;
+      const statusValue = statusFilter.value;
+
+      let visibleCount = 0;
+
+      memberCards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const email = card.querySelector('p').textContent.toLowerCase();
+        const role = card.dataset.role;
+        const status = card.dataset.status;
+
+        const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
+        const matchesRole = roleValue === 'all' || role === roleValue;
+        const matchesStatus = statusValue === 'all' || status === statusValue;
+
+        if (matchesSearch && matchesRole && matchesStatus) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterMembers);
+    roleFilter.addEventListener('change', filterMembers);
+    statusFilter.addEventListener('change', filterMembers);
+
+    // Initialie progress bars with animation
+    setTimeout(() => {
+      const progressBars = document.querySelectorAll('.progress-bar');
+      progressBars.forEach(bar => {
+        const fill = bar.querySelector('.progress-fill');
+        const width = fill.style.width;
+        fill.style.transition = 'width 0.5s ease-in-out';
+        fill.style.width = width; // Trigger reflow
+      });
+    }, 100);
+  }, []);
+
   return (
     <div className='team-bg'>
       <div className='min-h-screen flex flex-col'>
@@ -191,7 +242,7 @@ const Team = () => {
                     <span className='text-sm font-medium text-gray-800'>18/20</span>
                   </div>
                   <div className='progress-bar'>
-                    <div className='progress-fill bg-green-500' style={{width: "90%"}}></div>
+                    <div className='progress-fill bg-green-500' style={{ width: "90%" }}></div>
                   </div>
 
                   <div className='mt-4 flex justify-between text-sm'>
@@ -212,7 +263,7 @@ const Team = () => {
               </div>
 
               {/* Member 2 */}
-               <div className='card p-5 member-card fade-in' data-role="member" data-status="active">
+              <div className='card p-5 member-card fade-in' data-role="member" data-status="active">
                 <div className='flex justify-between'>
                   <div className='flex items-start'>
                     <div className='relative'>
@@ -265,7 +316,7 @@ const Team = () => {
                     <span className='text-sm font-medium text-gray-800'>12/15</span>
                   </div>
                   <div className='progress-bar'>
-                    <div className='progress-fill bg-blue-500' style={{width: "80%"}}></div>
+                    <div className='progress-fill bg-blue-500' style={{ width: "80%" }}></div>
                   </div>
 
                   <div className='mt-4 flex justify-between text-sm'>
@@ -286,7 +337,7 @@ const Team = () => {
               </div>
 
               {/* Member 3 */}
-               <div className='card p-5 member-card fade-in' data-role="member" data-status="offline">
+              <div className='card p-5 member-card fade-in' data-role="member" data-status="offline">
                 <div className='flex justify-between'>
                   <div className='flex items-start'>
                     <div className='relative'>
@@ -339,7 +390,7 @@ const Team = () => {
                     <span className='text-sm font-medium text-gray-800'>8/12</span>
                   </div>
                   <div className='progress-bar'>
-                    <div className='progress-fill bg-blue-500' style={{width: "66.67%"}}></div>
+                    <div className='progress-fill bg-blue-500' style={{ width: "66.67%" }}></div>
                   </div>
 
                   <div className='mt-4 flex justify-between text-sm'>
@@ -413,7 +464,7 @@ const Team = () => {
                     <span className='text-sm font-medium text-gray-800'>5/5</span>
                   </div>
                   <div className='progress-bar'>
-                    <div className='progress-fill bg-green-500' style={{width: "100%"}}></div>
+                    <div className='progress-fill bg-green-500' style={{ width: "100%" }}></div>
                   </div>
 
                   <div className='mt-4 flex justify-between text-sm'>
@@ -487,7 +538,7 @@ const Team = () => {
                     <span className='text-sm font-medium text-gray-800'>14/18</span>
                   </div>
                   <div className='progress-bar'>
-                    <div className='progress-fill bg-blue-500' style={{width: "77.78%"}}></div>
+                    <div className='progress-fill bg-blue-500' style={{ width: "77.78%" }}></div>
                   </div>
 
                   <div className='mt-4 flex justify-between text-sm'>
@@ -561,7 +612,7 @@ const Team = () => {
                     <span className='text-sm font-medium text-gray-800'>9/14</span>
                   </div>
                   <div className='progress-bar'>
-                    <div className='progress-fill bg-blue-500' style={{width: "64.29%"}}></div>
+                    <div className='progress-fill bg-blue-500' style={{ width: "64.29%" }}></div>
                   </div>
 
                   <div className='mt-4 flex justify-between text-sm'>
