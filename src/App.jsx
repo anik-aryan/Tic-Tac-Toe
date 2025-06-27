@@ -15,8 +15,8 @@ function App() {
     {
       path: "/",
       element: <>
-        <HomePage></HomePage>
-        {/* <Team></Team> */}
+        {/* <HomePage></HomePage> */}
+        <Team></Team>
       </>
     },
     {

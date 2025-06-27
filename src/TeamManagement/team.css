@@ -49,11 +49,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-    animation: fadeIn 0.2s ease;
-}
-
 .dropdown-item {
     padding: 10px 16px;
     display: flex;
@@ -119,4 +114,9 @@
         padding-left: 1rem;
         padding-right: 1rem;
     }
+}
+
+.dropdown-content.open {
+    display: block;
+    animation: fadeIn 0.2s ease;
 }
