@@ -476,7 +476,7 @@ const Tasks = ({ onOpenSidebar }) => {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(task =>
         task.title.toLowerCase().includes(query) ||
-        (task.description && task.description.toLowerCase().includes(query))
+        (task.description?.toLowerCase().includes(query))
       );
     }
 
